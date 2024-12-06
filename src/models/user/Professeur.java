@@ -3,8 +3,8 @@ package models.user;
 public class Professeur extends Utilisateur{
     private String specialiter;
 
-    public Professeur(String nom, int id, String specialiter) {
-        super(nom, id);
+    public Professeur(String nom, int id, String password, char role, String specialiter) {
+        super(nom, id, password, role);
         this.specialiter = specialiter;
     }
 

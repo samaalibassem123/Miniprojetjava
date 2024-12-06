@@ -3,8 +3,8 @@ package models.document;
 public class Livre extends Document {
     private int nombrePages;
 
-    public Livre(String titre, String auteur, Boolean disponible, int nombrePages) {
-        super(titre, auteur, disponible);
+    public Livre(String id, String titre, String auteur, Boolean disponible, int nombrePages) {
+        super(id,titre, auteur, disponible);
         this.nombrePages = nombrePages;
     }
 

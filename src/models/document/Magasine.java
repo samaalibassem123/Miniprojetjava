@@ -3,8 +3,8 @@ package models.document;
 public class Magasine extends Document {
     private int numeroEdition;
 
-    public Magasine(String titre, String auteur, Boolean disponible, int numeroEdition) {
-        super(titre, auteur, disponible);
+    public Magasine(String id, String titre, String auteur, Boolean disponible, int numeroEdition) {
+        super(id, titre, auteur, disponible);
         this.numeroEdition = numeroEdition;
     }
 
