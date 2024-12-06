@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5aa79b8c-fd38-431d-a164-38209b577fdc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/document/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/document/Document.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/document/Livre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/document/Livre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/document/Magasine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/document/Magasine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/user/Etudiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/user/Etudiant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/user/Professeur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/user/Professeur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/user/Utilisateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/user/Utilisateur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/DocService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/DocService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +52,7 @@
       <option name="presentableId" value="Default" />
       <updated>1733424635744</updated>
       <workItem from="1733424637059" duration="8536000" />
-      <workItem from="1733495902620" duration="12607000" />
+      <workItem from="1733495902620" duration="15719000" />
     </task>
     <servers />
   </component>

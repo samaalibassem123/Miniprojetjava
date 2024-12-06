@@ -2,6 +2,8 @@ import models.document.Document;
 import models.document.Livre;
 import models.document.Magasine;
 import models.emprunt.Emprunt;
+import models.user.Etudiant;
+import models.user.Professeur;
 import models.user.Utilisateur;
 import services.DocService;
 import services.UserService;
@@ -35,19 +37,20 @@ public class Main {
         System.out.print("CHOISIR = ");
     }
     public static void ExecuteDocs(int n){
-        Scanner sc = new Scanner(System.in);
-        //AUTENTICATION
-        System.out.println("---------LOGIN---------");
-        System.out.print("ID = ");
-        int ID = sc.nextInt();
-        sc.nextLine();
-        System.out.print("PASSWORD = ");
-        String PASSWORD = sc.nextLine();
-        if (!UserService.RechercheUserById(tabUser, ID, PASSWORD) && ID != 0 && !PASSWORD.equals("ADMIN")){
-            System.out.println("User Id ou mot passe est incorrect !!");
-        }else if (!UserService.RechercheByTeacherRole(tabUser, ID, PASSWORD) && ID != 0 && !PASSWORD.equals("ADMIN") ){
-            System.out.println("tu n'a pas le droit d'acces");
-        }else {
+        if (n != 0){
+            Scanner sc = new Scanner(System.in);
+            //AUTENTICATION
+            System.out.println("---------LOGIN---------");
+            System.out.print("ID = ");
+            int ID = sc.nextInt();
+            sc.nextLine();
+            System.out.print("PASSWORD = ");
+            String PASSWORD = sc.nextLine();
+            if (!UserService.RechercheUserById(tabUser, ID, PASSWORD) && (ID != 0 || !PASSWORD.equals("ADMIN"))){
+                System.out.println("User Id ou mot passe est incorrect !!");
+            }else if (!UserService.RechercheByTeacherRole(tabUser, ID, PASSWORD) && (ID != 0 && !PASSWORD.equals("ADMIN")) ){
+                System.out.println("tu n'a pas le droit d'acces");
+            }else {
                 switch (n){
                     case 1:
                         String id;
@@ -102,6 +105,7 @@ public class Main {
                 }
             }
         }
+        }
 
 
 
@@ -111,6 +115,66 @@ public class Main {
                 "2. Affiche Un Utilisateur \n" +
                 "0. Retournez");
         System.out.print("CHOISIR = ");
+    }
+    public static void ExecuteUsers(int n){
+        Scanner sc = new Scanner(System.in);
+        switch (n){
+            case 1:
+                //CREER UN UTILISATEUR
+                int id;
+                do {
+                    System.out.print("Donnez Votre ID: ");
+                    id = sc.nextInt();
+                    if (UserService.RechercheUserById(tabUser, id) || id == 0){
+                        System.out.println("ID est Deja Utiliser !! ");
+                    }
+                }while (UserService.RechercheUserById(tabUser, id) || id == 0);
+
+                System.out.print("Donnez Votre Nom: ");
+                String name = sc.nextLine();
+                sc.nextLine();
+
+                sc.nextLine();
+                System.out.print("Donnez Votre Password : ");
+                String Password = sc.nextLine();
+
+                sc.nextLine();
+                //ROLE
+                char role;
+                do {
+                    System.out.print("Choisir Le Role Etudiant:E Professeur:T = ");
+                    String role_input = sc.nextLine();
+                    role = role_input.charAt(0);
+
+                    switch (role){
+                        case 'E':
+                            sc.nextLine();
+                            System.out.print("Donnez Votre Niveau : ");
+                            String niv = sc.nextLine();
+                            Utilisateur etudiant = new Etudiant(name,id,Password,role,niv);
+                            UserService.AjouterUser(etudiant, tabUser);
+                            break;
+                        case 'T':
+                            sc.nextLine();
+                            System.out.print("Donnez Votre Specialiter: ");
+                            String spec = sc.nextLine();
+                            Utilisateur Professeur = new Professeur(name,id,Password,role,spec);
+                            UserService.AjouterUser(Professeur, tabUser);
+                        default:
+                            System.out.println("Slectionnz E ou T");
+                    }
+                }while (role != 'E' && role != 'T');
+                break;
+            case 2:
+                UserService.AfficheUsers(tabUser);
+                break;
+            case 0:
+                break;
+            default:
+                System.out.println("Entrez un Nombre Entre 1 et 2");
+                break;
+
+        }
     }
 
     // 1.3)Menu des utilisateur
@@ -138,6 +202,7 @@ public class Main {
                 switch (reponse){
                     case 0:
                         stop = true;
+                        break;
                     case 1:
                         int reponse1;
                         do {
@@ -155,6 +220,7 @@ public class Main {
                             Main.MenuUser();
                             //INPUT DE CHOIX
                             reponse2 = sc.nextInt();
+                            Main.ExecuteUsers(reponse2);
                         }while (reponse2 != 0);
                         break;
                     case 3:
@@ -169,8 +235,10 @@ public class Main {
                     case 4:
                         //AFFICHAGE DES EMPRUNTS
                         break;
+
                     default:
                         System.out.println("TAPPEZ UN NOMBRE COMME LA LISTE INDIQUE");
+                        break;
                 }
 
 
