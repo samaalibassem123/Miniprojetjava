@@ -6,6 +6,7 @@ import models.user.Etudiant;
 import models.user.Professeur;
 import models.user.Utilisateur;
 import services.DocService;
+import services.EmpruntService;
 import services.UserService;
 
 import java.util.ArrayList;
@@ -180,9 +181,40 @@ public class Main {
     // 1.3)Menu des utilisateur
     public static void MenuEmprunt(){
         System.out.println("1. Emprunter Un Document \n" +
-                "2.  Routournez Un Utilisateur \n" +
+                "2.  Routournez Un Document \n" +
                 "0. Retournez");
         System.out.print("CHOISIR = ");
+    }
+    public static void ExecuteEmprunt(int n){
+        if(n != 0){
+            Scanner sc = new Scanner(System.in);
+            //AUTENTICATION
+            System.out.println("---------LOGIN---------");
+            System.out.print("ID = ");
+            int ID = sc.nextInt();
+            sc.nextLine();
+            System.out.print("PASSWORD = ");
+            String PASSWORD = sc.nextLine();
+            if (!UserService.RechercheUserById(tabUser, ID, PASSWORD) && ID == 0){
+                System.out.println("User Id ou mot passe est incorrect !!");
+            }else {
+                switch (n){
+                    case 1:
+                        //EMPRUNT
+                        //check if 
+                        break;
+                    case 2:
+                        break;
+                    default:
+                        System.out.println("entrez un nombre 1 ou 2");
+                        break;
+                }
+            }
+
+
+
+
+        }
     }
 
 
@@ -230,10 +262,12 @@ public class Main {
                             Main.MenuEmprunt();
                             //INPUT DE CHOIX
                             reponse3 = sc.nextInt();
+                            Main.ExecuteUsers(reponse3);
                         }while (reponse3 != 0);
                         break;
                     case 4:
                         //AFFICHAGE DES EMPRUNTS
+                        EmpruntService.AfficheEmprunt(tabHisto);
                         break;
 
                     default:
