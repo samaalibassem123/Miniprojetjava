@@ -201,15 +201,17 @@ public class Main {
                 switch (n){
                     case 1:
                         //SAISIR L'ID DE LIVRE QUIL VA EMPRUNTER
-                        //TFABET MEL KTEB MAWJOUF FEL TABLEAU TABDOCS WELLA LEE
+                        //TFABET MEL KTEB MAWJOUD FEL TABLEAU TABDOCS WELLA LEE
                         // KEN R9ITOU FEBET FEL DISPONIBILITER TE3OU
-                        //KEN R9ITOU DISPONIBLE FEBET MEL USER KEN EMPRUNTEH EL KTEB 9BAL WELLA LEE FI TABLE EL EMPRUNT
+                        //KEN R9ITOU DISPONIBLE FEBET MEL USER KEN EMPRUNTEH EL KTEB 9BAL WELLA LEE FI TABLE EL EMPRUNT WELLA KEN FEMA WE7ED E5ER EMPRUNTEH 9ABLOU
                         //KEN AWEL MARRA ZIDOU FEL EMPRUNT W BADEL EL DIPONIBLITER TE3OU L FALSE
                         break;
                     case 2:
                         //SAISIR L'ID DE LIVRE QU'IL VA RETOURNEZ
+                        //TFABET MEL KTEB MAWJOUD FEL TABLEAU TABDOCS WELLA LEE
                         //FABET MEL KTEB ELI BCH YRAJ3OU ESQUE HOWA TSSALFOU 9BAL WELLA LEE
-                        //
+                        //KEN R9IT ELI HOWA TSSALFOU BADEL EL DIPONIBILITER TE3OU L TRUE
+                        //SOBOU ELI HOWA
                         break;
                     default:
                         System.out.println("entrez un nombre 1 ou 2");
