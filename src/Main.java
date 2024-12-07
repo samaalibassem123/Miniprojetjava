@@ -190,7 +190,7 @@ public class Main {
             Scanner sc = new Scanner(System.in);
             //AUTENTICATION
             System.out.println("---------LOGIN---------");
-            System.out.print("ID = ");
+            System.out.print("DONNEZ VOTRE ID = ");
             int ID = sc.nextInt();
             sc.nextLine();
             System.out.print("PASSWORD = ");
@@ -201,6 +201,9 @@ public class Main {
                 switch (n){
                     case 1:
                         //SAISIR L'ID DE LIVRE QUIL VA EMPRUNTER
+                        sc.nextLine();
+                        System.out.print("donnez l'ID de Document que vous voulez l'emprunter: ");
+                        String id = sc.nextLine();
                         //TFABET MEL KTEB MAWJOUD FEL TABLEAU TABDOCS WELLA LEE
                         // KEN R9ITOU FEBET FEL DISPONIBILITER TE3OU
                         //KEN R9ITOU DISPONIBLE FEBET MEL USER KEN EMPRUNTEH EL KTEB 9BAL WELLA LEE FI TABLE EL EMPRUNT WELLA KEN FEMA WE7ED E5ER EMPRUNTEH 9ABLOU
@@ -211,7 +214,7 @@ public class Main {
                         //TFABET MEL KTEB MAWJOUD FEL TABLEAU TABDOCS WELLA LEE
                         //FABET MEL KTEB ELI BCH YRAJ3OU ESQUE HOWA TSSALFOU 9BAL WELLA LEE
                         //KEN R9IT ELI HOWA TSSALFOU BADEL EL DIPONIBILITER TE3OU L TRUE
-                        //SOBOU ELI HOWA
+                        //SOBOU FEL TABLE EMPRUNT ELI HOWA RAJ3OU SAYER
                         break;
                     default:
                         System.out.println("entrez un nombre 1 ou 2");
