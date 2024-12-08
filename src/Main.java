@@ -174,7 +174,7 @@ public class Main {
             case 0:
                 break;
             default:
-                System.out.println("Entrez un Nombre Entre 1 et 2");
+                System.out.println("§§§§§§§§§§§§§ Entrez un Nombre Entre 1 et 2 §§§§§§§§§§§§§");
                 break;
 
         }
@@ -193,19 +193,19 @@ public class Main {
             Scanner sc = new Scanner(System.in);
             //AUTENTICATION
             System.out.println("---------LOGIN---------");
-            System.out.print("DONNEZ VOTRE ID = ");
+            System.out.print("---DONNEZ VOTRE ID = ");
             int ID = sc.nextInt();
             sc.nextLine();
-            System.out.print("PASSWORD = ");
+            System.out.print("---PASSWORD = ");
             String PASSWORD = sc.nextLine();
             if (!UserService.RechercheUserById(tabUser, ID, PASSWORD) || ID == 0){
-                System.out.println("User Id ou mot passe est incorrect !!");
+                System.out.println("§§§§§§§§§§§§§ User Id ou mot passe est incorrect §§§§§§§§§§§§§");
             }else {
                 switch (n){
                     case 1:
                         //SAISIR L'ID DE LIVRE QUIL VA EMPRUNTER
                         sc.nextLine();
-                        System.out.print("donnez l'ID de Document que vous voulez l'emprunter: ");
+                        System.out.print("---donnez l'ID de Document que vous voulez l'emprunter: ");
                         String id = sc.nextLine();
 
                         //FEBET MEL DOUCUMENT MAWJOUD FEL TABLEAU WELLA LEE
@@ -217,17 +217,17 @@ public class Main {
                             //EMPRUNTER
                             EmpruntService.AjouterEmprumpt(tabHisto,user,doc);
                         }else {
-                            System.out.println("DOCUMENT INVALIDE !!");
+                            System.out.println("§§§§§§§§§§§§§ DOCUMENT INVALIDE §§§§§§§§§§§§§");
                         }
                         break;
                     case 2:
                         //SAISIR L'ID DE LIVRE QUIL VA EMPRUNTER
                         sc.nextLine();
-                        System.out.print("donnez l'ID de Document que vous voulez Retournez: ");
+                        System.out.print("---donnez l'ID de Document que vous voulez Retournez: ");
                         String idretour = sc.nextLine();
-                        //FEBET FEL KETEB MZAJOU FEL DOCTAB WELLA LEE
+                        //FEBET FEL KETEB MAWJOUD FEL DOCTAB WELLA LEE
                         if (!DocService.RechercheDocument(tabDocs, idretour)){
-                            System.out.println("Id de document Incorrect !!");
+                            System.out.println("§§§§§§§§§§§§§ Id de document Incorrect §§§§§§§§§§§§§");
                         }else {
                             EmpruntService.RetourDoc(tabDocs,tabUser,tabHisto,idretour,ID);
                         }
@@ -236,7 +236,7 @@ public class Main {
                         EmpruntService.AfficheEmprunt(tabHisto, ID);
                         break;
                     default:
-                        System.out.println("entrez un nombre 1 ou 2");
+                        System.out.println("§§§§§§§§§§§§§ entrez un nombre 1 ou 2 §§§§§§§§§§§§§");
                         break;
                 }
             }
@@ -304,13 +304,13 @@ public class Main {
                         break;
 
                     default:
-                        System.out.println("TAPPEZ UN NOMBRE COMME LA LISTE INDIQUE");
+                        System.out.println("§§§§§§§§§§§§§ TAPPEZ UN NOMBRE COMME LA LISTE INDIQUE §§§§§§§§§§§§§");
                         break;
                 }
 
 
             }catch (Exception e){
-                System.out.println("!!!!!! INVALID INPUT !!!!!!");
+                System.out.println("§§§§§§§§§§§§§ INVALID INPUT §§§§§§§§§§§§§");
             }
         }while (!stop);
 

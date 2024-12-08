@@ -31,7 +31,7 @@ public class DocService {
     //afficher
     public static void AfficheDocs(ArrayList<Document> tab){
         if (tab.size() == 0){
-            System.out.println("-------->>>>>TAB USER EMPTY<<<<<--------");
+            System.out.println("-------->>>>>TAB DOCS EMPTY<<<<<--------");
         }else {
             System.out.println("-------->>>>>TAB DES DOCUMENTS<<<<<--------");
             for (Document doc : tab){

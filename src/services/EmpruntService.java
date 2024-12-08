@@ -43,7 +43,7 @@ public class EmpruntService {
         Emprunt e = new Emprunt(date, text, user, doc);
         //AJOUTE L'OBJET AU TABLEAU
         tab.add(e);
-        System.out.println("RETOUR AJOUT AVEC SUCCER !!");
+        System.out.println("----------->>>RETOUR AJOUT AVEC SUCCER<<<------------");
     }
     //RETOURNEZ
     public static void RetourDoc(ArrayList<Document> tabDoc ,LinkedList<Utilisateur> TabUser, ArrayList<Emprunt> tab, String idDoc, int idUser){
@@ -67,7 +67,7 @@ public class EmpruntService {
             Document DOC = DocService.GetDocByID(tabDoc, idDoc);
             //RETOURNEZ LE DOC
             EmpruntService.AjoutRetour(tab, USER, DOC);
-            System.out.println("ReTour Avec Succes !!");
+
         }
         }catch (RetourInvalideException e){
             System.out.println(e);
@@ -77,7 +77,7 @@ public class EmpruntService {
     //afichage
     public static void AfficheEmprunt(ArrayList<Emprunt> tab, int id){
         if (tab.size() == 0){
-            System.out.println("-------->>>>>TAB USER EMPTY<<<<<--------");
+            System.out.println("-------->>>>>TAB HISTO EMPTY<<<<<--------");
         }else {
             System.out.println("-------->>>>>TAB HISTORIQUE DES EMPRUNTS<<<<<--------");
             for (Emprunt e : tab){
