@@ -22,16 +22,18 @@ public class Utilisateur implements Operation {
 
     // Emprunter Les Documents
     @Override
-    public void EmprunterDocument(Document doc) {
+    public Boolean EmprunterDocument(Document doc) {
         try{
             if (!doc.getDisponible()){
                 throw new DocumentIndisponibleException();
             }else {
                 doc.setDisponible(false);
                 System.out.println("DOCUMENT A ETE EMPRUNTER AVEC SUCCEZ !!");
+                return true;
             }
         }catch (DocumentIndisponibleException e){
             System.out.println(e);
+            return false;
         }
     }
     // Routournez Les Documents

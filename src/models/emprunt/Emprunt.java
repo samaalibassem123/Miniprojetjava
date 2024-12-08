@@ -1,5 +1,6 @@
 package models.emprunt;
 
+import models.document.Document;
 import models.user.Utilisateur;
 
 import java.util.Date;
@@ -8,6 +9,14 @@ public class Emprunt {
     private Date date;
     private String text;
     private Utilisateur user;
+    private Document doc;
+
+    public Emprunt(Date date, String text, Utilisateur user, Document doc) {
+        this.date = date;
+        this.text = text;
+        this.user = user;
+        this.doc = doc;
+    }
 
     public Emprunt(Date date, String text, Utilisateur user) {
         this.date = date;
@@ -39,12 +48,21 @@ public class Emprunt {
         this.user = user;
     }
 
+    public Document getDoc() {
+        return doc;
+    }
+
+    public void setDoc(Document doc) {
+        this.doc = doc;
+    }
+
     @Override
     public String toString() {
         return "Emprunt{" +
                 "date=" + date +
                 ", text='" + text + '\'' +
                 ", user=" + user +
+                ", doc=" + doc +
                 '}';
     }
 }

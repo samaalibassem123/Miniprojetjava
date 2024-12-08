@@ -9,6 +9,7 @@ import services.DocService;
 import services.EmpruntService;
 import services.UserService;
 
+import javax.lang.model.util.ElementScanner6;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -22,19 +23,18 @@ public class Main {
 
     // 1) Affichage de Menu Principale
     public static void MenuPrincipale(){
-            System.out.println("1. Ajout et Affiche des Documents \n" +
-                    "2. Ajout et Affiche d'utilisateur \n" +
-                    "3. Emprunt et Retour de Document \n" +
-                    "4. Affichage de l'historique des emprunts \n" +
-                    "0. Quitter");
+            System.out.println("---1 = Ajout et Affiche des Documents \n" +
+                    "---2 = Ajout et Affiche d'utilisateur \n" +
+                    "---3 = Emprunt et Retour de Document \n" +
+                    "---0 = Quitter");
             System.out.print("CHOISIR = ");
     }
 
     // 1.1) Menu des Documents
     public static void MenuDocs(){
-        System.out.println("1. Ajouter Un Document \n" +
-                "2. Affiche Un Document \n" +
-                "0. Retournez");
+        System.out.println("----1. Ajouter Un Document \n" +
+                "----2. Affiche Un Document \n" +
+                "----0. Retournez");
         System.out.print("CHOISIR = ");
     }
     public static void ExecuteDocs(int n){
@@ -48,9 +48,9 @@ public class Main {
             System.out.print("PASSWORD = ");
             String PASSWORD = sc.nextLine();
             if (!UserService.RechercheUserById(tabUser, ID, PASSWORD) && (ID != 0 || !PASSWORD.equals("ADMIN"))){
-                System.out.println("User Id ou mot passe est incorrect !!");
+                System.out.println("§§§§§§§§§§§§§ User Id ou mot passe est incorrect §§§§§§§§§§§§§");
             }else if (!UserService.RechercheByTeacherRole(tabUser, ID, PASSWORD) && (ID != 0 && !PASSWORD.equals("ADMIN")) ){
-                System.out.println("tu n'a pas le droit d'acces");
+                System.out.println("§§§§§§§§§§§§§ tu n'a pas le droit d'acces §§§§§§§§§§§§§");
             }else {
                 switch (n){
                     case 1:
@@ -60,7 +60,7 @@ public class Main {
                             System.out.print("---Donnez l'Id de Documents : ");
                             id = sc.nextLine();
                             if(DocService.RechercheDocument(tabDocs, id)){
-                                System.out.println("Id deja utiliser");
+                                System.out.println("§§§§§§§§§§§§§ Id deja utiliser §§§§§§§§§§§§§");
                             }
                         }while (DocService.RechercheDocument(tabDocs, id));
                         sc.nextLine();
@@ -80,19 +80,19 @@ public class Main {
 
                             switch (answer){
                                 case 1:
-                                    System.out.print("donnez le nombre de page de livre : ");
+                                    System.out.print("----donnez le nombre de page de livre : ");
                                     int nbp = sc.nextInt();
                                     Document livre =new Livre(id, titre, AutNom, true,nbp);
                                     DocService.AjouterDocument(livre, tabDocs);
                                     break;
                                 case 2:
-                                    System.out.print("donnez le numero d'edition : ");
+                                    System.out.print("----donnez le numero d'edition : ");
                                     int nedition = sc.nextInt();
                                     Document magazine =new Magasine(id, titre, AutNom, true,nedition);
                                     DocService.AjouterDocument(magazine, tabDocs);
                                     break;
                                 default:
-                                    System.out.println("Entrez 1 ou 2");
+                                    System.out.println("§§§§§§§§§§§§§ Entrez 1 ou 2 §§§§§§§§§§§§§");
                                     break;
                             }
                         }while (answer != 1 && answer != 2);
@@ -101,7 +101,7 @@ public class Main {
                         DocService.AfficheDocs(tabDocs);
                         break;
                     default:
-                        System.out.println("Entrez un Numbre Comme la liste vous indique !!");
+                        System.out.println("§§§§§§§§§§§§§ Entrez un Numbre Comme la liste vous indique §§§§§§§§§§§§§");
                         break;
                 }
             }
@@ -112,9 +112,9 @@ public class Main {
 
     // 1.2)Menu des utilisateur
     public static void MenuUser(){
-        System.out.println("1. Ajouter Un Utilisateur \n" +
-                "2. Affiche Un Utilisateur \n" +
-                "0. Retournez");
+        System.out.println("----1. Ajouter Un Utilisateur \n" +
+                "----2. Affiche Un Utilisateur \n" +
+                "----0. Retournez");
         System.out.print("CHOISIR = ");
     }
     public static void ExecuteUsers(int n){
@@ -124,45 +124,47 @@ public class Main {
                 //CREER UN UTILISATEUR
                 int id;
                 do {
-                    System.out.print("Donnez Votre ID: ");
+                    System.out.print("---Donnez Votre ID: ");
                     id = sc.nextInt();
                     if (UserService.RechercheUserById(tabUser, id) || id == 0){
-                        System.out.println("ID est Deja Utiliser !! ");
+                        System.out.println("§§§§§§§§§§§§§ ID est Deja Utiliser §§§§§§§§§§§§§ ");
                     }
                 }while (UserService.RechercheUserById(tabUser, id) || id == 0);
-
-                System.out.print("Donnez Votre Nom: ");
-                String name = sc.nextLine();
                 sc.nextLine();
+                System.out.print("---Donnez Votre Nom: ");
+                String nom = sc.nextLine();
+
 
                 sc.nextLine();
-                System.out.print("Donnez Votre Password : ");
+                System.out.print("---Donnez Votre Password : ");
                 String Password = sc.nextLine();
 
                 sc.nextLine();
                 //ROLE
                 char role;
                 do {
-                    System.out.print("Choisir Le Role Etudiant:E Professeur:T = ");
+                    System.out.print("---Choisir Le Role Etudiant:E Professeur:T = ");
                     String role_input = sc.nextLine();
                     role = role_input.charAt(0);
 
                     switch (role){
                         case 'E':
                             sc.nextLine();
-                            System.out.print("Donnez Votre Niveau : ");
+                            System.out.print("----Donnez Votre Niveau : ");
                             String niv = sc.nextLine();
-                            Utilisateur etudiant = new Etudiant(name,id,Password,role,niv);
+                            Utilisateur etudiant = new Etudiant(nom,id,Password,role,niv);
                             UserService.AjouterUser(etudiant, tabUser);
                             break;
                         case 'T':
                             sc.nextLine();
-                            System.out.print("Donnez Votre Specialiter: ");
+                            System.out.print("----Donnez Votre Specialiter: ");
                             String spec = sc.nextLine();
-                            Utilisateur Professeur = new Professeur(name,id,Password,role,spec);
+                            Utilisateur Professeur = new Professeur(nom,id,Password,role,spec);
                             UserService.AjouterUser(Professeur, tabUser);
+                            break;
                         default:
-                            System.out.println("Slectionnz E ou T");
+                            System.out.println("§§§§§§§§§§§§§ Slectionnz E ou T §§§§§§§§§§§§§");
+                            break;
                     }
                 }while (role != 'E' && role != 'T');
                 break;
@@ -180,9 +182,10 @@ public class Main {
 
     // 1.3)Menu des utilisateur
     public static void MenuEmprunt(){
-        System.out.println("1. Emprunter Un Document \n" +
-                "2.  Routournez Un Document \n" +
-                "0. Retournez");
+        System.out.println("----1. Emprunter Un Document \n" +
+                "----2. Routournez Un Document \n" +
+                "----3. Affichage de l'historique des emprunts \n" +
+                "----0. Retournez");
         System.out.print("CHOISIR = ");
     }
     public static void ExecuteEmprunt(int n){
@@ -195,7 +198,7 @@ public class Main {
             sc.nextLine();
             System.out.print("PASSWORD = ");
             String PASSWORD = sc.nextLine();
-            if (!UserService.RechercheUserById(tabUser, ID, PASSWORD) && ID == 0){
+            if (!UserService.RechercheUserById(tabUser, ID, PASSWORD) || ID == 0){
                 System.out.println("User Id ou mot passe est incorrect !!");
             }else {
                 switch (n){
@@ -204,17 +207,33 @@ public class Main {
                         sc.nextLine();
                         System.out.print("donnez l'ID de Document que vous voulez l'emprunter: ");
                         String id = sc.nextLine();
-                        //TFABET MEL KTEB MAWJOUD FEL TABLEAU TABDOCS WELLA LEE
-                        // KEN R9ITOU FEBET FEL DISPONIBILITER TE3OU
-                        //KEN R9ITOU DISPONIBLE FEBET MEL USER KEN EMPRUNTEH EL KTEB 9BAL WELLA LEE FI TABLE EL EMPRUNT WELLA KEN FEMA WE7ED E5ER EMPRUNTEH 9ABLOU
-                        //KEN AWEL MARRA ZIDOU FEL EMPRUNT W BADEL EL DIPONIBLITER TE3OU L FALSE
+
+                        //FEBET MEL DOUCUMENT MAWJOUD FEL TABLEAU WELLA LEE
+                        if (DocService.RechercheDocument(tabDocs, id)){
+                            //GET DOCUMENT
+                            Document doc = DocService.GetDocByID(tabDocs,id);
+                            //GET USER
+                            Utilisateur user = UserService.GetUserById(tabUser, ID);
+                            //EMPRUNTER
+                            EmpruntService.AjouterEmprumpt(tabHisto,user,doc);
+                        }else {
+                            System.out.println("DOCUMENT INVALIDE !!");
+                        }
                         break;
                     case 2:
-                        //SAISIR L'ID DE LIVRE QU'IL VA RETOURNEZ
-                        //TFABET MEL KTEB MAWJOUD FEL TABLEAU TABDOCS WELLA LEE
-                        //FABET MEL KTEB ELI BCH YRAJ3OU ESQUE HOWA TSSALFOU 9BAL WELLA LEE
-                        //KEN R9IT ELI HOWA TSSALFOU BADEL EL DIPONIBILITER TE3OU L TRUE
-                        //SOBOU FEL TABLE EMPRUNT ELI HOWA RAJ3OU SAYER
+                        //SAISIR L'ID DE LIVRE QUIL VA EMPRUNTER
+                        sc.nextLine();
+                        System.out.print("donnez l'ID de Document que vous voulez Retournez: ");
+                        String idretour = sc.nextLine();
+                        //FEBET FEL KETEB MZAJOU FEL DOCTAB WELLA LEE
+                        if (!DocService.RechercheDocument(tabDocs, idretour)){
+                            System.out.println("Id de document Incorrect !!");
+                        }else {
+                            EmpruntService.RetourDoc(tabDocs,tabUser,tabHisto,idretour,ID);
+                        }
+                        break;
+                    case 3:
+                        EmpruntService.AfficheEmprunt(tabHisto, ID);
                         break;
                     default:
                         System.out.println("entrez un nombre 1 ou 2");
@@ -232,7 +251,14 @@ public class Main {
 
 
     public static void main(String[] args) {
-
+        System.out.println("-------------------MINI PROJET JAVA-------------------\n" +
+                "-------------------ETUDIANTS-------------------\n" +
+                "-------------------MELEK AMEN ALLAH AKRIMI-------------------\n" +
+                "-------------------BASSEM SAMAALI-------------------\n" +
+                "-------------------GROUPE-------------------\n" +
+                "-------------------A04-------------------\n" +
+                "-------------------2024/2025-------------------");
+        System.out.println("-------------------DEBUT DE PROGRAMME-------------------");
         Boolean stop = false;
         do {
             try{
@@ -273,12 +299,8 @@ public class Main {
                             Main.MenuEmprunt();
                             //INPUT DE CHOIX
                             reponse3 = sc.nextInt();
-                            Main.ExecuteUsers(reponse3);
+                            Main.ExecuteEmprunt(reponse3);
                         }while (reponse3 != 0);
-                        break;
-                    case 4:
-                        //AFFICHAGE DES EMPRUNTS
-                        EmpruntService.AfficheEmprunt(tabHisto);
                         break;
 
                     default:

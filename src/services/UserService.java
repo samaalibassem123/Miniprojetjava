@@ -3,6 +3,7 @@ package services;
 import models.document.Document;
 import models.user.Utilisateur;
 
+import java.rmi.server.UID;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -34,15 +35,31 @@ public class UserService {
         return false;
     }
 
+    public static Utilisateur GetUserById(LinkedList<Utilisateur> tab, int id){
+        for (Utilisateur user : tab ){
+            if (user.getId() == id ){
+                return user;
+            }
+        }
+        return null;
+    }
+
     //AJOUTER
     public static void AjouterUser(Utilisateur user, LinkedList<Utilisateur> tab){
         tab.add(user);
-        System.out.println("Utilisateur a ete ajouter avec Succer :)");
+        System.out.println("-------->>>>>Utilisateur a ete ajouter avec Succer :)");
     }
     //AFFICHER
     public static void AfficheUsers(LinkedList<Utilisateur> tab){
-        for (Utilisateur user : tab){
-            System.out.println(user);
+        if (tab.size() == 0){
+            System.out.println("-------->>>>>TAB USER EMPTY<<<<<--------");
+        }else{
+            System.out.println("-------->>>>>TABLEAU D'UTILISATEUR<<<<<--------");
+            for (Utilisateur user : tab){
+                System.out.println(user);
+            }
+            System.out.println("-------->>>>>FIN<<<<<--------");
         }
+
     }
 }
