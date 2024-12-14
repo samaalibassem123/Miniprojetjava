@@ -1,4 +1,4 @@
-package models.document;
+package document;
 
 public class Magasine extends Document {
     private int numeroEdition;

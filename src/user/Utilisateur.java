@@ -1,23 +1,20 @@
-package models.user;
+package user;
 
 import ErrorHandler.DocumentIndisponibleException;
 import Interfaces.Operation;
-import models.document.Document;
+import document.Document;
 
-import javax.management.relation.Role;
-import java.util.PrimitiveIterator;
+import java.util.LinkedList;
 
 public class Utilisateur implements Operation {
     private String nom;
     private int id;
-    private String password;
-    private char role;
 
-    public Utilisateur(String nom, int id, String password, char role) {
+
+    public Utilisateur(String nom, int id) {
         this.nom = nom;
         this.id = id;
-        this.password = password;
-        this.role = role;
+
     }
 
     // Emprunter Les Documents
@@ -60,20 +57,43 @@ public class Utilisateur implements Operation {
         this.id = id;
     }
 
-    public String getPassword() {
-        return password;
+    //RECHERCHE
+    public static Boolean RechercheUserById(LinkedList<Utilisateur> tab, int id){
+        for (Utilisateur user : tab ){
+            if (user.getId() == id){
+                return true;
+            }
+        }
+        return false;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public static Utilisateur GetUserById(LinkedList<Utilisateur> tab, int id){
+        for (Utilisateur user : tab ){
+            if (user.getId() == id ){
+                return user;
+            }
+        }
+        return null;
     }
 
-    public char getRole() {
-        return role;
+    //AJOUTER
+    public static void AjouterUser(Utilisateur user, LinkedList<Utilisateur> tab){
+        tab.add(user);
+        System.out.println("-------->>>>>Utilisateur a ete ajouter avec Succer :)");
     }
 
-    public void setRole(char role) {
-        this.role = role;
+    //AFFICHER
+    public static void AfficheUsers(LinkedList<Utilisateur> tab){
+        if (tab.size() == 0){
+            System.out.println("-------->>>>>TAB USER EMPTY<<<<<--------");
+        }else{
+            System.out.println("-------->>>>>TABLEAU D'UTILISATEUR<<<<<--------");
+            for (Utilisateur user : tab){
+                System.out.println(user);
+            }
+            System.out.println("-------->>>>>FIN<<<<<--------");
+        }
+
     }
 
     @Override
@@ -81,7 +101,6 @@ public class Utilisateur implements Operation {
         return "Utilisateur{" +
                 "nom='" + nom + '\'' +
                 ", id=" + id +
-                ", role=" + role +
                 '}';
     }
 }

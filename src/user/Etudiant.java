@@ -1,10 +1,10 @@
-package models.user;
+package user;
 
 public class Etudiant extends Utilisateur{
     private String niveau;
 
-    public Etudiant(String nom, int id, String password, char role, String niveau) {
-        super(nom, id, password, role);
+    public Etudiant(String nom, int id, String niveau) {
+        super(nom, id);
         this.niveau = niveau;
     }
 

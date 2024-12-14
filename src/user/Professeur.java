@@ -1,10 +1,10 @@
-package models.user;
+package user;
 
 public class Professeur extends Utilisateur{
     private String specialiter;
 
-    public Professeur(String nom, int id, String password, char role, String specialiter) {
-        super(nom, id, password, role);
+    public Professeur(String nom, int id, String specialiter) {
+        super(nom, id );
         this.specialiter = specialiter;
     }
 

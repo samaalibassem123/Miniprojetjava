@@ -1,4 +1,4 @@
-package models.document;
+package document;
 
 public class Livre extends Document {
     private int nombrePages;
